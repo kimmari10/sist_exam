@@ -12,11 +12,33 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class TeacherController {
 
 	@RequestMapping(value = "/admin")
-	public String login(Model model) {
-
+	public String main(String menu) {
+		
 		return "/admin/admin_main";
 	}
-
+	
+	@RequestMapping(value = "/testlist")
+	public String testlist() {
+		
+		return "/admin/testlist";
+	}
+	
+	@RequestMapping(value = "/grouplist")
+	public String grouplist() {
+		
+		return "/admin/grouplist";
+	}
+	
+	@RequestMapping(value = "/manage")
+	public String manageAdmin() {
+		
+		return "/admin/manage";
+	}
+	
+	
+	
+	
+	
 	@RequestMapping(value = "/join")
 	public String join(Model model) {
 

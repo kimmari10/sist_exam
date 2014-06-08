@@ -1,0 +1,67 @@
+body
+{
+	background: #eaeaea;
+}
+
+#header
+{
+	background : white;
+	height : 100px;
+	padding-top : 30px;
+	font-size : 50px;
+	text-align: center;
+}
+
+#footer
+{
+	text-align : center;
+	font-size : 15px;
+	padding : 20px;
+	background: gray;
+}
+
+#content
+{
+	float:left;
+	padding : 15px;
+}
+
+#menu
+{
+	width : 300px;
+	float:left;
+}
+
+#menu li
+{
+	padding : 10px;
+}
+
+#menu li a:ACTIVE,
+#menu li a:HOVER,
+#menu li a:VISITED,
+#menu li a:LINK
+{
+	color: GRAY;
+	text-decoration: none;
+		
+}
+
+#menu ul
+{
+	background : white;
+	border-top: 1px black solid;
+}
+
+#member
+{
+	height : 30px;
+	background: gray;
+	text-align: right;
+}
+
+#main_content
+{
+	overflow: auto;
+	zoom:1;
+}

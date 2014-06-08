@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.sist</groupId>
 	<artifactId>exam</artifactId>
-	<name>SistExam</name>
+	<name>sist_exam</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
