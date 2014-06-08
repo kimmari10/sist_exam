@@ -9,10 +9,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Handles requests for the application home page.
  */
 @Controller
-public class TeacherController {
+public class AdminController {
 
 	@RequestMapping(value = "/admin")
-	public String main(String menu) {
+	public String main(String menu)
+	{
 		
 		return "/admin/admin_main";
 	}
@@ -35,7 +36,11 @@ public class TeacherController {
 		return "/admin/manage";
 	}
 	
-	
+	@RequestMapping(value = "/setexam")
+	public String tiles() {
+		
+		return "/admin/set_exam";
+	}
 	
 	
 	

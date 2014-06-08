@@ -43,59 +43,49 @@ pageEncoding="UTF-8"%>
 <section id="content">
 	<div class="test_title">
 		<div>
-			test title / footprint
+			테스트 설정
 		</div>
 	</div>
 	<div>
-		<div>
-			<form action="">
-				<label for="aid">아이디 : </label>
-				<input type="text" name="aid">
-				<label for="apwd">비밀번호 : </label>
-				<input type="text" name="apwd">
-				<label for="aname">이름 : </label>
-				<input type="text" name="aname">
-				<label for="aphone">연락처 : </label>
-				<input type="text" name="aphone">
-				<label for="amail">이메일 : </label>
-				<input type="text" name="amail">
-				<label for="tgroup">그룹 : </label>
-				<select>
-					<option>1</option>
-				</select>
-				<input type="submit" value="register">
-			</form>
-			
-		</div>
+		<form action="">
+		<table>
+			<tr>
+				<td><label for="title">타이틀</label></td>
+				<td><input type="text" name="title"></td>
+			</tr>
+			<tr>
+				<td><label for="subject">과목선택</label></td>
+				<td>
+					<select name="subject">
+						<option>1</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td><label>응시그룹</label></td>
+				<td>
+					<input type="checkbox">6강의장
+					<input type="checkbox">1강의장
+					<input type="checkbox">3강의장
+				</td>
+			</tr>
+			<tr>
+				<td><label for="date">시험날짜</label></td>
+				<td>
+					<input type="date" name="date">
+				</td>
+			</tr>
+			<tr>
+				<td><label for="time">제한시간</label></td>
+				<td>
+					<input type="text" name="time">분
+				</td>
+			</tr>
+		</table>
+		<input type="submit" value="문제출제하기">
+		</form>	
 	</div>
 	
-	<div>
-		<p>teacher list</p>
-		<table>
-			<thead>
-				<tr>
-					<th>아이디</th>
-					<th>비밀번호</th>
-					<th>이름</th>
-					<th>연락처</th>
-					<th>이메일</th>
-					<th>그룹</th>
-					<th>M/D</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>1</td>
-					<td>2</td>
-					<td>3</td>
-					<td>4</td>
-					<td>5</td>
-					<td>6</td>
-					<td>7</td>
-				</tr>
-			</tbody>
-		</table>	
-	</div>
 </section>
 </div>
 <footer id="footer">
