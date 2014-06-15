@@ -23,8 +23,8 @@ pageEncoding="UTF-8"%>
 		<li><a href="manage">관리자 관리</a></li>
 	</ul>
 	<ul>
-		<li><a href="admin?menu=4">테스트 출제</a></li>
-		<li><a href="admin?menu=5">테스트 관리</a></li>
+		<li><a href="setexam">테스트 출제</a></li>
+		<li><a href="manage">테스트 관리</a></li>
 	</ul>
 	<ul>
 		<li><a href="admin?menu=6">응시자 관리</a></li>
