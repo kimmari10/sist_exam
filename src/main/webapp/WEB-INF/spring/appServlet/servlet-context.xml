@@ -54,7 +54,7 @@
 
 	<beans:bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
 		<beans:property name="dataSource" ref="dataSource"></beans:property>
-		<beans:property name="mapperLocations" value="classpath:com/ithink/test/dao/mapper/*.xml"></beans:property>
+		<beans:property name="mapperLocations" value="classpath:com/sist/exam/dao/mapper/*.xml"></beans:property>
 	</beans:bean>
 	
 	<beans:bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSessionTemplate">		
