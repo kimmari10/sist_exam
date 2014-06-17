@@ -59,7 +59,8 @@ public class AdminController {
 	@RequestMapping(value = "/loginProc")
 	public String loginProc() {
 		
-		//dao를 이용해 id가져와서 비교
+		//compare id from db
+		
 		
 		
 		
