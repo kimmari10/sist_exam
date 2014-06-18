@@ -16,15 +16,18 @@
 	<resources mapping="/resources/**" location="/resources/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
-<!-- 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+<!-- 	
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	 -->
+-->
+	 <!-- replace tiles view resolver -->
 	
 	
 	<context:component-scan base-package="com.sist.exam.controller" />
 		
+	<!-- tiles set -->	
 	<beans:bean id="tilesConfigurer"
 		class="org.springframework.web.servlet.view.tiles2.TilesConfigurer" >
 		<beans:property name="definitions" value="WEB-INF/tilesdef.xml" />
@@ -35,41 +38,39 @@
 	</beans:bean>
 		
 		
-		
-	<!-- 
-	<beans:bean class="com.sist.exam.dao.AdminDaoImpl" name="adminDao">
-		<beans:property name="template" ref="template"></beans:property>
-		<beans:property name="template" ref="template"></beans:property>
-	</beans:bean>
-	
-	
-	
-	
-	jdbc
+	<!-- jdbc set -->
 	<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></beans:property>
-		<beans:property name="url" value="jdbc:oracle:thin:@kkame.net:orcl"></beans:property>
+		<beans:property name="url" value="jdbc:oracle:thin:@kkame.net:1521:orcl"></beans:property>
 		<beans:property name="username" value="js"></beans:property>
 		<beans:property name="password" value="11111"></beans:property>
 	</beans:bean>
-	
+
+
 	<beans:bean name="template" class="org.springframework.jdbc.core.JdbcTemplate">
 		<beans:property name="dataSource" ref="dataSource"></beans:property>
 	</beans:bean>
 
+
 	<beans:bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
 		<beans:property name="dataSource" ref="dataSource"></beans:property>
-		<beans:property name="mapperLocations" value="classpath:com/sist/exam/dao/mapper/*.xml"></beans:property>
+		<beans:property name="mapperLocations" 
+						value="classpath:com/sist/exam/dao/mapper/*.xml"></beans:property>
 	</beans:bean>
 	
 	<beans:bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSessionTemplate">		
 		<beans:constructor-arg index="0" ref="sqlSessionFactory"></beans:constructor-arg>
 	</beans:bean>
 	
+	
+	
+	
+	
+<!--	
 		트랜잭션	
 	 <beans:bean id="transactionManager"
         class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <beans:property name="dataSource" ref="dataSource" />
     </beans:bean>
-	 -->
+-->
 </beans:beans>

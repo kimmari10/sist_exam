@@ -3,8 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="com.sist.exam.AdminDao">
-	<select id="getAdminList" resultType="com.sist.exam.Admin">
+<mapper namespace="com.sist.exam.dao.AdminDao">
+	<select id="getAdminList" resultType="com.sist.exam.vo.Admin">
 		SELECT * FROM ADMIN
 	</select>
   <!-- 

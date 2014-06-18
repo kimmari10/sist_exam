@@ -14,6 +14,7 @@ pageEncoding="UTF-8"%>
 
 </head>
 <body>
+
 <!-- header -->
 <tiles:insertAttribute name="header"/>
 
