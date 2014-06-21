@@ -10,17 +10,17 @@ pageEncoding="UTF-8"%>
 	</div>
 	
 	<div class="form_box">
-		<form action="">
-			<label for="aid">아이디 : </label>
-			<input type="text" name="aid"><br />
-			<label for="apwd">비밀번호 : </label>
-			<input type="text" name="apwd"><br />
-			<label for="aname">이름 : </label>
-			<input type="text" name="aname"><br />
-			<label for="aphone">연락처 : </label>
-			<input type="text" name="aphone"><br />
-			<label for="amail">이메일 : </label>
-			<input type="text" name="amail"><br />
+		<form action="regadmin" method="get">
+			<label for="admin_id">아이디 : </label>
+			<input type="text" name="admin_id"><br />
+			<label for="admin_pw">비밀번호 : </label>
+			<input type="text" name="admin_pw"><br />
+			<label for="admin_name">이름 : </label>
+			<input type="text" name="admin_name"><br />
+			<label for="admin_phone">연락처 : </label>
+			<input type="text" name="admin_phone"><br />
+			<label for="admin_email">이메일 : </label>
+			<input type="text" name="admin_email"><br />
 			<label for="tgroup">그룹 : </label>
 			<select>
 				<option>1</option>

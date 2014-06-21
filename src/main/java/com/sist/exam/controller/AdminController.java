@@ -3,6 +3,8 @@ package com.sist.exam.controller;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.sist.exam.dao.AdminDao;
+import com.sist.exam.dao.SubjectDao;
 import com.sist.exam.vo.Admin;
+import com.sist.exam.vo.Subject;
 
 /**
  * Handles requests for the application home page.
@@ -36,10 +40,32 @@ public class AdminController {
 	
 	//테스트과목
 	@RequestMapping(value = "/testlist")
-	public String testlist() {
+	public String testlist(Model m) throws ClassNotFoundException, SQLException {
+		
+		SubjectDao subDao = sqlSession.getMapper(SubjectDao.class);
+		
+		List<Subject> list = subDao.getSubjectList();
+		
+		m.addAttribute("sub", list);
 		
 		return "/admin/testlist";
 	}
+	
+	
+	//과목추가
+	@RequestMapping(value = "/add_subject")
+	public String addSubject(Subject subject) throws ClassNotFoundException, SQLException {
+		
+		SubjectDao subDao = sqlSession.getMapper(SubjectDao.class);
+		
+		subDao.insert(subject);
+		
+		return "redirect:/testlist";
+	}
+	
+	
+	
+	
 	
 	//테스트그룹
 	@RequestMapping(value = "/grouplist")
@@ -59,6 +85,16 @@ public class AdminController {
 		m.addAttribute("admin", list);
 		
 		return "/admin/manage";
+	}
+	//관리자추가
+	@RequestMapping(value = "/regadmin")
+	public String registerAdmin(Admin admin, HttpServletRequest req) throws ClassNotFoundException, SQLException {
+		
+		AdminDao adminDao = sqlSession.getMapper(AdminDao.class);
+		adminDao.insert(admin);
+//		System.out.println(admin.getAdmin_id());
+		
+		return "redirect:/manage";
 	}
 	
 	

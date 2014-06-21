@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <section id="content">
 	<div class="test_title">
 		<div>
@@ -8,9 +9,9 @@ pageEncoding="UTF-8"%>
 	</div>
 	<div class="form_box">
 		<div>
-			<form action="">
+			<form action="add_subject">
 				<label for="topic">과목추가 : </label>
-				<input type="text" name="topic">
+				<input type="text" name="subject_name">
 				<input type="submit" value="register">
 			</form>
 		</div>
@@ -22,6 +23,7 @@ pageEncoding="UTF-8"%>
 					<option>2</option>
 					<option>3</option>
 				</select>
+				<input type="text" name="newtopic" >
 				<input type="submit" value="modify">
 			</form>
 		</div>
@@ -51,12 +53,14 @@ pageEncoding="UTF-8"%>
 				</tr>
 			</thead>
 			<tbody>
+				<c:forEach items="${subject }" var="l">
 				<tr>
-					<td>1</td>
-					<td>자바</td>
+					<td>${l.subject_no }</td>
+					<td>${l.subject_name }</td>
 					<td>0개</td>
 					<td>3명</td>
 				</tr>
+				</c:forEach>
 			</tbody>
 		</table>	
 	</div>

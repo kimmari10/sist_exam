@@ -7,8 +7,12 @@
 	<select id="getAdminList" resultType="com.sist.exam.vo.Admin">
 		SELECT * FROM ADMIN
 	</select>
+	<insert id="insert" parameterType="com.sist.exam.vo.Admin">
+		INSERT INTO ADMIN(ADMIN_ID, ADMIN_PW, ADMIN_NAME, ADMIN_EMAIL, ADMIN_PHONE)
+		VALUES(#{admin_id, jdbcType=VARCHAR}, #{admin_pw, jdbcType=VARCHAR}, #{admin_name, jdbcType=VARCHAR}, #{admin_email, jdbcType=VARCHAR}, #{admin_phone, jdbcType=VARCHAR})
+	</insert>
   <!-- 
-  	<insert id="insert"  parameterType="com.ithink.test.vo.Todo">
+  	<insert id="insert"  parameterType="com.sist.exam.vo.Admin">
   		<selectKey keyProperty="seq" order="BEFORE" resultType="String">
   			SELECT MAX(TO_NUMBER(NVL(SEQ, '1')))+1 FROM TODO
   		</selectKey>
@@ -20,10 +24,6 @@
   	<update id="update">
   		UPDATE TODO SET SUCCESS ='DONE', SUCCDAY=SYSDATE WHERE SEQ =#{seq}
   	</update>
-  	
-  	<select id="getCount" resultType="Integer">
-		 SELECT COUNT(SEQ) C FROM TODO WHERE SUCCESS='YET'
-  	</select>
   	
   	<delete id="delete">
   		DELETE FROM TODO WHERE SEQ = #{seq}

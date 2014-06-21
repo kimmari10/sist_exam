@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.sist.exam.dao.SubjectDao">
+	<select id="getSubjectList" resultType="com.sist.exam.vo.Subject">
+		SELECT * FROM SUBJECT
+	</select>
+	
+  	
+  	<insert id="insert"  parameterType="com.sist.exam.vo.Subject">
+  		<selectKey keyProperty="subject_no" order="BEFORE" resultType="String">
+  			SELECT MAX(TO_NUMBER(NVL(SEQ, '1')))+1 FROM SUBJECT
+  		</selectKey>
+  		INSERT INTO SUBJECT
+  		(SUBJECT_NO, SUBJECT_NAME)
+  		VALUES(#{subject_no}, #{subject_name})
+  	</insert>
+  <!-- 
+  	
+  	<update id="update">
+  		UPDATE TODO SET SUCCESS ='DONE', SUCCDAY=SYSDATE WHERE SEQ =#{seq}
+  	</update>
+  	
+  	<delete id="delete">
+  		DELETE FROM TODO WHERE SEQ = #{seq}
+  	</delete> -->
+</mapper>
