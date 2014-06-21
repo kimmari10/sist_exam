@@ -69,3 +69,48 @@ body
 	overflow: auto;
 	zoom:1;
 }
+
+
+
+.list_box
+{
+	margin-top:20px;
+}
+
+
+/* 관리자관리 */
+
+.admin_id
+{
+	width:80px;
+}
+
+.admin_pw
+{
+	width:100px;
+}
+
+.admin_name
+{
+	width:70px;
+}
+
+.admin_phone
+{
+	width:150px;
+}
+
+.admin_email
+{
+	width:180px;
+}
+
+.admin_group
+{
+	width:50px;
+}
+
+.admin_md
+{
+	width:60px;
+}

@@ -6,7 +6,7 @@ pageEncoding="UTF-8"%>
 			test title / footprint
 		</div>
 	</div>
-	<div>
+	<div class="form_box">
 		<div>
 			<form action="">
 				<label for="topic">과목추가 : </label>
@@ -38,7 +38,8 @@ pageEncoding="UTF-8"%>
 		</div>
 	</div>
 	
-	<div>
+	
+	<div class="list_box">
 		<p>과목별 주소</p>
 		<table>
 			<thead>

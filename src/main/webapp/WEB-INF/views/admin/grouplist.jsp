@@ -7,7 +7,7 @@ pageEncoding="UTF-8"%>
 			test title / footprint
 		</div>
 	</div>
-	<div>
+	<div class="form_box">
 		<div>
 			<form action="">
 				<label for="group">그룹추가 : </label>
@@ -43,7 +43,8 @@ pageEncoding="UTF-8"%>
 		</div>
 	</div>
 	
-	<div>
+	
+	<div class="list_box">
 		<p>그룹별 주소</p>
 		<table>
 			<thead>
