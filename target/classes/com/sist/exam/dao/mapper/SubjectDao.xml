@@ -11,10 +11,9 @@
   	
   	<insert id="insert"  parameterType="com.sist.exam.vo.Subject">
   		<selectKey keyProperty="subject_no" order="BEFORE" resultType="String">
-  			SELECT MAX(TO_NUMBER(NVL(SEQ, '1')))+1 FROM SUBJECT
+  			SELECT MAX(TO_NUMBER(NVL(SUBJECT_NO, '1')))+1 FROM SUBJECT
   		</selectKey>
-  		INSERT INTO SUBJECT
-  		(SUBJECT_NO, SUBJECT_NAME)
+  		INSERT INTO SUBJECT	(SUBJECT_NO, SUBJECT_NAME)
   		VALUES(#{subject_no}, #{subject_name})
   	</insert>
   <!-- 

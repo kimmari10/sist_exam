@@ -46,18 +46,19 @@ public class AdminController {
 		
 		List<Subject> list = subDao.getSubjectList();
 		
-		m.addAttribute("sub", list);
+		m.addAttribute("subject", list);
 		
 		return "/admin/testlist";
 	}
 	
-	
+		
 	//과목추가
 	@RequestMapping(value = "/add_subject")
-	public String addSubject(Subject subject) throws ClassNotFoundException, SQLException {
+	public String addSubject(Subject subject, HttpServletRequest req) throws ClassNotFoundException, SQLException {
+		
 		
 		SubjectDao subDao = sqlSession.getMapper(SubjectDao.class);
-		
+
 		subDao.insert(subject);
 		
 		return "redirect:/testlist";
@@ -86,13 +87,14 @@ public class AdminController {
 		
 		return "/admin/manage";
 	}
+
+	
 	//관리자추가
 	@RequestMapping(value = "/regadmin")
 	public String registerAdmin(Admin admin, HttpServletRequest req) throws ClassNotFoundException, SQLException {
 		
 		AdminDao adminDao = sqlSession.getMapper(AdminDao.class);
 		adminDao.insert(admin);
-//		System.out.println(admin.getAdmin_id());
 		
 		return "redirect:/manage";
 	}

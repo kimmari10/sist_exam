@@ -9,7 +9,7 @@ pageEncoding="UTF-8"%>
 	</div>
 	<div class="form_box">
 		<div>
-			<form action="add_subject">
+			<form action="add_subject" method="post">
 				<label for="topic">과목추가 : </label>
 				<input type="text" name="subject_name">
 				<input type="submit" value="register">

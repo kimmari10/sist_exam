@@ -10,7 +10,7 @@ pageEncoding="UTF-8"%>
 	</div>
 	
 	<div class="form_box">
-		<form action="regadmin" method="get">
+		<form action="regadmin" method="post">
 			<label for="admin_id">아이디 : </label>
 			<input type="text" name="admin_id"><br />
 			<label for="admin_pw">비밀번호 : </label>
