@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.sist.exam.dao.GroupsDao">
+	<select id="getGroupList" resultType="com.sist.exam.vo.Groups">
+		SELECT * FROM GROUPS
+	</select>
+	
+	<insert id="insert" parameterType="com.sist.exam.vo.Groups">
+  		<selectKey keyProperty="group_no" order="BEFORE" resultType="String">
+  			SELECT MAX(TO_NUMBER(NVL(GROUP_NO, '1')))+1 FROM GROUPS
+  		</selectKey>
+  		INSERT INTO GROUPS
+  		VALUES(#{group_no}, #{group_name}, #{group_begin}, #{group_due})
+  	</insert>
+  	
+  	<update id="update">
+  		UPDATE GROUPS SET GROUP_NAME =#{param2 } WHERE GROUP_NAME =#{param1 }
+  	</update>
+  	
+  	<delete id="delete">
+  		DELETE FROM GROUPS WHERE GROUP_NAME = #{curr_name}
+  	</delete>
+</mapper>

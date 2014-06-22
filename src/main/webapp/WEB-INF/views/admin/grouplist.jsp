@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <section id="content">
 	<div class="test_title">
@@ -9,33 +10,35 @@ pageEncoding="UTF-8"%>
 	</div>
 	<div class="form_box">
 		<div>
-			<form action="">
-				<label for="group">그룹추가 : </label>
-				<input type="text" name="group"><br />
-				<label for="sday">수강시작일 : </label>
-				<input type="text" name="sday"><br />
-				<label for="eday">수강종료일 : </label>
-				<input type="text" name="eday">
+			<form action="add_group">
+				<label for="group_name">그룹추가 : </label>
+				<input type="text" name="group_name"><br />
+				<label for="begin">수강시작일 : </label>
+				<input type="date" name="group_begin" ><br />
+				<label for="due">수강종료일 : </label>
+				<input type="date" name="group_due">
 				<input type="submit" value="register">
 			</form>
 		</div>
 		<div>
-			<form action="">
-				<label for="topic">그룹변경 : </label>
-				<select>
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
+			<form action="mod_group">
+				<label for="curr_name">그룹변경 : </label>
+				<select name="curr_name">
+				<c:forEach items="${group }" var="l">
+					<option>${l.group_name }</option>
+				</c:forEach>
 				</select>
-				<input type="text" name="newname" >
+				<input type="text" name="new_name" >
 				<input type="submit" value="modify">
 			</form>
 		</div>
 		<div>
-			<form action="">
+			<form action="del_group">
 				<label for="topic">그룹삭제 : </label>
-				<select>
-					<option>1</option>
+				<select name="curr_name">
+				<c:forEach items="${group }" var="l">
+					<option>${l.group_name }</option>
+				</c:forEach>
 				</select>
 				<input type="submit" value="delete">
 			</form>
@@ -58,14 +61,16 @@ pageEncoding="UTF-8"%>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>1</td>
-					<td>14.1.4~14.7.2</td>
-					<td>6강의장</td>
-					<td>2개</td>
-					<td>2명</td>
-					<td>21명</td>
-				</tr>
+				<c:forEach items="${group }" var="l">
+					<tr>
+						<td>${l.group_no }</td>
+						<td>${l.group_begin } ~ ${l.group_due }</td>
+						<td>${l.group_name }</td>
+						<td>0개</td>
+						<td>0명</td>
+						<td>0명</td>
+					</tr>
+				</c:forEach>
 			</tbody>
 		</table>	
 		</div>

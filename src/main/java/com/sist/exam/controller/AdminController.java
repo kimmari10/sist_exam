@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.sist.exam.dao.AdminDao;
+import com.sist.exam.dao.GroupsDao;
 import com.sist.exam.dao.SubjectDao;
 import com.sist.exam.vo.Admin;
+import com.sist.exam.vo.Groups;
 import com.sist.exam.vo.Subject;
 
 /**
@@ -90,7 +92,6 @@ public class AdminController {
 		SubjectDao subDao = sqlSession.getMapper(SubjectDao.class);
 		
 		String curr_name = req.getParameter("curr_name");
-//		System.out.println(curr_name);
 		subDao.delete(curr_name);
 		
 		return "redirect:/testlist";
@@ -101,10 +102,65 @@ public class AdminController {
 	
 	//테스트그룹
 	@RequestMapping(value = "/grouplist")
-	public String grouplist() {
+	public String grouplist(Model m) throws ClassNotFoundException, SQLException  {
+	
+		GroupsDao gDao = sqlSession.getMapper(GroupsDao.class);
+		List<Groups> list = gDao.getGroupList();
+		
+		m.addAttribute("group", list);
 		
 		return "/admin/grouplist";
 	}
+	
+	
+	//그룹추가
+	@RequestMapping(value = "/add_group")
+	public String addGroup(Groups g) throws ClassNotFoundException, SQLException  {
+		
+		GroupsDao gDao = sqlSession.getMapper(GroupsDao.class);
+		gDao.insert(g);
+		
+		return "redirect:/grouplist";
+	}
+	
+	//그룹수정
+	@RequestMapping(value = "/mod_group")
+	public String modGroup(HttpServletRequest req) throws ClassNotFoundException, SQLException  {
+		
+		GroupsDao cDao = sqlSession.getMapper(GroupsDao.class);
+
+		String cn = req.getParameter("curr_name");
+		String nn = req.getParameter("new_name");
+		
+		if(cn == "")
+		{
+			cn="null";
+		}
+		if(nn =="")
+		{
+			nn="null";
+					
+		}
+		
+		cDao.update(cn, nn);
+		
+		return "redirect:/grouplist";
+	}
+	
+	//그룹삭제
+	@RequestMapping(value = "/del_group")
+	public String delGroup(HttpServletRequest req) throws ClassNotFoundException, SQLException  {
+		
+		GroupsDao cDao = sqlSession.getMapper(GroupsDao.class);
+		
+		String curr_name = req.getParameter("curr_name");
+		
+		cDao.delete(curr_name);
+		
+		return "redirect:/grouplist";
+	}	
+	
+	
 	
 
 	//관리자관리
@@ -122,7 +178,7 @@ public class AdminController {
 	
 	//관리자추가
 	@RequestMapping(value = "/regadmin")
-	public String registerAdmin(Admin admin, HttpServletRequest req) throws ClassNotFoundException, SQLException {
+	public String registerAdmin(Admin admin) throws ClassNotFoundException, SQLException {
 		
 		AdminDao adminDao = sqlSession.getMapper(AdminDao.class);
 		adminDao.insert(admin);
