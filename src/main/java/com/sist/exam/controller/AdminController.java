@@ -44,7 +44,7 @@ public class AdminController {
 		
 		SubjectDao subDao = sqlSession.getMapper(SubjectDao.class);
 		
-		List<Subject> list = subDao.getSubjectList();
+		List<Subject> list = subDao.getSubjectList(); 
 		
 		m.addAttribute("subject", list);
 		
@@ -54,7 +54,7 @@ public class AdminController {
 		
 	//과목추가
 	@RequestMapping(value = "/add_subject")
-	public String addSubject(Subject subject, HttpServletRequest req) throws ClassNotFoundException, SQLException {
+	public String addSubject(Subject subject) throws ClassNotFoundException, SQLException {
 		
 		
 		SubjectDao subDao = sqlSession.getMapper(SubjectDao.class);
@@ -64,6 +64,37 @@ public class AdminController {
 		return "redirect:/testlist";
 	}
 	
+	//과목수정
+	@RequestMapping(value = "/mod_subject")
+	public String modSubject(HttpServletRequest req) throws ClassNotFoundException, SQLException {
+		
+		
+		SubjectDao subDao = sqlSession.getMapper(SubjectDao.class);
+
+		//기존이름과 새로운이름을 받아서 넘긴다
+		String curr_name = req.getParameter("curr_name");
+		String new_name = req.getParameter("new_name");
+		
+
+		subDao.update(curr_name, new_name);
+			
+		
+		return "redirect:/testlist";
+	}	
+	
+	//과목삭제
+	@RequestMapping(value = "/del_subject")
+	public String delSubject(HttpServletRequest req) throws ClassNotFoundException, SQLException {
+		
+		
+		SubjectDao subDao = sqlSession.getMapper(SubjectDao.class);
+		
+		String curr_name = req.getParameter("curr_name");
+//		System.out.println(curr_name);
+		subDao.delete(curr_name);
+		
+		return "redirect:/testlist";
+	}	
 	
 	
 	

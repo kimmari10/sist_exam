@@ -11,9 +11,9 @@ pageEncoding="UTF-8"%>
 		<div>
 			<form action="">
 				<label for="group">그룹추가 : </label>
-				<input type="text" name="group">
+				<input type="text" name="group"><br />
 				<label for="sday">수강시작일 : </label>
-				<input type="text" name="sday">
+				<input type="text" name="sday"><br />
 				<label for="eday">수강종료일 : </label>
 				<input type="text" name="eday">
 				<input type="submit" value="register">
@@ -27,6 +27,7 @@ pageEncoding="UTF-8"%>
 					<option>2</option>
 					<option>3</option>
 				</select>
+				<input type="text" name="newname" >
 				<input type="submit" value="modify">
 			</form>
 		</div>
@@ -35,8 +36,6 @@ pageEncoding="UTF-8"%>
 				<label for="topic">그룹삭제 : </label>
 				<select>
 					<option>1</option>
-					<option>2</option>
-					<option>3</option>
 				</select>
 				<input type="submit" value="delete">
 			</form>
@@ -46,7 +45,8 @@ pageEncoding="UTF-8"%>
 	
 	<div class="list_box">
 		<p>그룹별 주소</p>
-		<table>
+		<div class="table-responsive">
+			<table class="table table-striped">
 			<thead>
 				<tr>
 					<th>번호</th>
@@ -68,5 +68,6 @@ pageEncoding="UTF-8"%>
 				</tr>
 			</tbody>
 		</table>	
+		</div>
 	</div>
 </section>

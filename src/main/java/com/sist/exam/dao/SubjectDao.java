@@ -9,8 +9,8 @@ public interface SubjectDao {
 	
 	public List<Subject> getSubjectList() throws SQLException, ClassNotFoundException;
 	public int insert(Subject subject) throws SQLException, ClassNotFoundException;
-	public int update(String sub_no) throws SQLException, ClassNotFoundException;
-	public int delete(String sub_no) throws SQLException, ClassNotFoundException;
+	public int update(String curr_name, String new_name) throws SQLException, ClassNotFoundException;
+	public int delete(String curr_name) throws SQLException, ClassNotFoundException;
 	
 	//업데이트 딜리트 인자 변수명 불확실.
 }

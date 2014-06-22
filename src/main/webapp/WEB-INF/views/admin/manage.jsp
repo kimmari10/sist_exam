@@ -32,32 +32,34 @@ pageEncoding="UTF-8"%>
 	
 	<div class="list_box">
 		<p>teacher list</p>
-		<table>
-			<thead>
-				<tr>
-					<th>아이디</th>
-					<th>비밀번호</th>
-					<th>이름</th>
-					<th>연락처</th>
-					<th>이메일</th>
-					<th>그룹</th>
-					<th>M/D</th>
-				</tr>
-			</thead>
-			
-			<tbody class="admin_list">
-			<c:forEach items="${admin }" var="l">
-				<tr>
-					<td class="admin_id">${l.admin_id }</td>
-					<td class="admin_pw">${l.admin_pw }</td>
-					<td class="admin_name">${l.admin_name }</td>
-					<td class="admin_phone">${l.admin_phone }</td>
-					<td class="admin_email">${l.admin_email }</td>
-					<td class="admin_group"></td>
-					<td class="admin_md">M/D</td>
-				</tr>
-			</c:forEach>
-			</tbody>
-		</table>	
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>아이디</th>
+						<th>비밀번호</th>
+						<th>이름</th>
+						<th>연락처</th>
+						<th>이메일</th>
+						<th>그룹</th>
+						<th>M/D</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+				<c:forEach items="${admin }" var="l">
+					<tr>
+						<td class="admin_id">${l.admin_id }</td>
+						<td class="admin_pw">${l.admin_pw }</td>
+						<td class="admin_name">${l.admin_name }</td>
+						<td class="admin_phone">${l.admin_phone }</td>
+						<td class="admin_email">${l.admin_email }</td>
+						<td class="admin_group"></td>
+						<td class="admin_md">M/D</td>
+					</tr>
+				</c:forEach>
+				</tbody>
+			</table>
+		</div>	
 	</div>
 </section>

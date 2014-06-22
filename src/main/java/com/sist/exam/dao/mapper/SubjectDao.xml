@@ -16,13 +16,12 @@
   		INSERT INTO SUBJECT	(SUBJECT_NO, SUBJECT_NAME)
   		VALUES(#{subject_no}, #{subject_name})
   	</insert>
-  <!-- 
   	
   	<update id="update">
-  		UPDATE TODO SET SUCCESS ='DONE', SUCCDAY=SYSDATE WHERE SEQ =#{seq}
+  		UPDATE SUBJECT SET SUBJECT_NAME =#{param2 } WHERE SUBJECT_NAME =#{param1 }
   	</update>
   	
   	<delete id="delete">
-  		DELETE FROM TODO WHERE SEQ = #{seq}
-  	</delete> -->
+  		DELETE FROM SUBJECT WHERE SUBJECT_NAME = #{curr_name}
+  	</delete>
 </mapper>

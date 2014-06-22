@@ -7,6 +7,7 @@ pageEncoding="UTF-8"%>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
 	<link type="text/css" rel="stylesheet" href="/exam/resources/admin/css/reset.css"/>
+	<link type="text/css" rel="stylesheet" href="/exam/resources/admin/css/bootstrap.css"/>
 	<link type="text/css" rel="stylesheet" href="/exam/resources/admin/css/common.css"/>
 	<link type="text/css" rel="stylesheet" href="/exam/resources/admin/css/visualize.jQuery.css"/>
 	<script type="text/javascript" src="/exam/resources/admin/js/jq.js"></script>

@@ -1,6 +1,5 @@
 body
 {
-	background: #eaeaea;
 }
 
 #header
@@ -32,9 +31,15 @@ body
 	width : 300px;
 	float:left;
 }
+#menu ul
+{
+	margin : 0px;
+}
+
 
 #menu li
 {
+	border-right : 1px solid black;
 	padding : 10px;
 }
 
@@ -54,6 +59,11 @@ body
 	border-top: 1px black solid;
 }
 
+#menu ul:FIRST-CHILD
+{
+	border-top : 0px;
+}
+
 #member
 {
 	height : 30px;
@@ -68,6 +78,7 @@ body
 	margin-right: auto;
 	overflow: auto;
 	zoom:1;
+	border-top : solid 1px black;
 }
 
 
@@ -79,38 +90,8 @@ body
 
 
 /* 관리자관리 */
-
-.admin_id
+.form_box label 
 {
-	width:80px;
-}
-
-.admin_pw
-{
-	width:100px;
-}
-
-.admin_name
-{
-	width:70px;
-}
-
-.admin_phone
-{
-	width:150px;
-}
-
-.admin_email
-{
-	width:180px;
-}
-
-.admin_group
-{
-	width:50px;
-}
-
-.admin_md
-{
-	width:60px;
+	width : 80px;
+	text-align: right;
 }
