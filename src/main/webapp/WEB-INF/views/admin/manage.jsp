@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <section id="content">
 	<div class="test_title">
 		<div>
@@ -12,13 +11,14 @@ pageEncoding="UTF-8"%>
 	<div class="form_box">
 		<form action="regadmin" method="post" class="form">
 			<label for="admin_id">아이디 : </label>
-			<input id="uid" type="text" name="admin_id"><br />
+			<input id="uid" type="text" name="admin_id" placeholder="영문,숫자 4~12자">
+			<input type="button" name="checker" onclick="checkID()" value="중복검사"><br />
 			<label for="admin_pw">비밀번호 : </label>
-			<input id="upw" type="text" name="admin_pw"><br />
+			<input id="upw" type="password" name="admin_pw" placeholder="영문, 숫자 6~12자"><br />
 			<label for="admin_name">이름 : </label>
-			<input id="uname" type="text" name="admin_name"><br />
+			<input id="uname" type="text" name="admin_name" placeholder="한글 2~5자"><br />
 			<label for="admin_phone">연락처 : </label>
-			<input id="tel" type="text" name="admin_phone"><br />
+			<input id="tel" type="text" name="admin_phone" placeholder="-제외한 10~11자리 숫자"><br />
 			<label for="admin_email">이메일 : </label>
 			<input id="group" type="text" name="admin_email"><br />
 			<label for="tgroup">그룹 : </label>
@@ -65,16 +65,31 @@ pageEncoding="UTF-8"%>
 		</div>	
 	</div>
 </section>
+<script type="text/javascript">
+function checkID()
+{
+      var id = $('#uid').val();
+      if( id == '' )
+      {
+            alert('아이디를 입력하세요');
+            return;
+      }   
+      
+      var url ='id_check?id=' + id;
+      
+      window.open(url, '',  'width=300, height=350, left=0, top=0');
+}
 
+</script>
 <script type="text/javascript">
 //<![CDATA[
 jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실행
 
 	// 변수 이름을 're_'로 정한것은 'Reguar Expression'의 머릿글자
-	var re_id = /^[a-z0-9_-]{4,12}$/; // 아이디 검사식
+	var re_id = /^[a-zA-Z0-9_-]{4,12}$/; // 아이디 검사식
 	var re_pw = /^[a-zA-Z0-9_-]{6,12}$/; // 비밀번호 검사식
-	
-	var re_tel = /^[0-9]{8,11}$/; // 전화번호 검사식
+	var re_name = /^[가-힣]{2,5}$/; //한글 2~5자
+	var re_tel = /^[0-9]{10,11}$/; // 전화번호 검사식
 	var re_mail = /^([\w\.-]+)@([a-z\d\.-]+)\.([a-z\.]{2,6})$/; // 이메일 검사식
 	
 	var 
@@ -102,7 +117,7 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
 			upw.focus();
 			return false;
 		} else if(re_name.test(name.val()) != true) { // 이름 검사
-			alert('[Name 입력 오류] 유효한 웹 사이트 주소를 입력해 주세요.');
+			alert('[Name 입력 오류]  이름(한글)을 정확히 입력해 주세요.');
 			name.focus();
 			return false;
 		} else if(re_mail.test(mail.val()) != true) { // 이메일 검사
@@ -127,9 +142,9 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
 		var s = $(this).next('strong'); // strong 요소를 변수에 할당
 		if (uid.val().length == 0) { // 입력 값이 없을 때
 			s.text(''); // strong 요소에 포함된 문자 지움
-		} else if (uid.val().length < 3) { // 입력 값이 3보다 작을 때
+		} else if (uid.val().length < 4) { // 입력 값이 4보다 작을 때
 			s.text('너무 짧아요.'); // strong 요소에 문자 출력
-		} else if (uid.val().length > 16) { // 입력 값이 16보다 클 때
+		} else if (uid.val().length > 12) { // 입력 값이 12보다 클 때
 			s.text('너무 길어요.'); // strong 요소에 문자 출력
 		} else { // 입력 값이 3 이상 16 이하일 때
 			s.text('적당해요.'); // strong 요소에 문자 출력
@@ -143,9 +158,9 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
 			s.text(''); // strong 요소에 포함된 문자 지움
 		} else if (upw.val().length < 6) { // 입력 값이 6보다 작을 때
 			s.text('너무 짧아요.'); // strong 요소에 문자 출력
-		} else if (upw.val().length > 18) { // 입력 값이 18보다 클 때
+		} else if (upw.val().length > 12) { // 입력 값이 12보다 클 때
 			s.text('너무 길어요.'); // strong 요소에 문자 출력
-		} else { // 입력 값이 6 이상 18 이하일 때
+		} else { // 입력 값이 6 이상 12 이하일 때
 			s.text('적당해요.'); // strong 요소에 문자 출력
 		}
 	});

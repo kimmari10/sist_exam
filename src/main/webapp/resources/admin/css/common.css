@@ -1,15 +1,37 @@
-body
-{
-}
 
+/*---------------------------- tiles Header 부분 ---------------------- */
 #header
 {
-	background : white;
 	height : 100px;
-	padding-top : 30px;
+	padding-top : 15px;
+	padding-left : 40px;
 	font-size : 50px;
-	text-align: center;
+	border-bottom : solid black 1px;
 }
+
+#header .login,
+#header .logout
+{
+	font-size : 20px;
+	position: absolute;
+	right: 50px;
+	top: 20px;
+}
+
+#header a
+{
+	text-decoration : none;
+}
+
+#header .join
+{
+	font-size: 20px;
+	position: absolute;
+	right: 50px;
+	top : 50px;
+}
+
+/* ------------------------------------------------------------------- */
 
 #footer
 {
@@ -78,7 +100,6 @@ body
 	margin-right: auto;
 	overflow: auto;
 	zoom:1;
-	border-top : solid 1px black;
 }
 
 

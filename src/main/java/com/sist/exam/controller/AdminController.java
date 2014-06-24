@@ -4,11 +4,13 @@ import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -183,7 +185,7 @@ public class AdminController {
 		AdminDao adminDao = sqlSession.getMapper(AdminDao.class);
 		adminDao.insert(admin);
 		
-		return "redirect:/manage";
+		return "redirect:/admin";
 	}
 	
 	
@@ -231,6 +233,28 @@ public class AdminController {
 		return "/admin/join";
 	}
 	
+	//중복검사
+	@RequestMapping(value ="/id_check")
+	public String idCheck(HttpServletRequest req, Model m) throws ClassNotFoundException, SQLException	{
+	
+//		String id = req.getParameter("uid");
+//		
+//		AdminDao aDao = sqlSession.getMapper(AdminDao.class);
+//		Admin admin = aDao.getAdmin(id);
+//		
+//		
+//		if(admin.getAdmin_id()!=null) 
+//		{
+//
+//		}
+			
+			
+		return "/admin/idCheck";
+		
+	}
+	
+	
+	
 	
 	//로그인
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -242,17 +266,44 @@ public class AdminController {
 	
 	
 	//로그인처리
-	@RequestMapping(value = "/loginProc")
-	public String loginProc() {
+	@RequestMapping(value = "/loginProc") 
+	public String loginProc(HttpServletRequest req) throws ClassNotFoundException, SQLException {
 		
-		//compare id from db
+		AdminDao aDao = sqlSession.getMapper(AdminDao.class);
+		
+		String uid = req.getParameter("uid");
+		String pwd = req.getParameter("pwd");
+		
+		Admin admin = aDao.getAdmin(uid);
+		
+		if(admin == null)
+		{
+			//회원이 없습니다.
+		}
 		
 		
+		else if(!admin.getAdmin_pw().equals(pwd))
+		{
+			//비밀번호가 일치 하지 않습니다
+		}
 		
+		else if(admin.getAdmin_pw().equals(pwd))
+		{
+			HttpSession session = req.getSession();
+			
+			session.setAttribute("uid", uid);
+			
+			return "/admin/admin_main";
+		}
 		
-		return "/admin/admin_main";
+		return "/admin/login";
 	}
 	
-	
-
+	@RequestMapping(value = "/logoutProc")
+	public String logoutProc(HttpSession session)
+	{
+		session.invalidate();
+		
+		return "/admin/login";
+	}
 }

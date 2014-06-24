@@ -7,12 +7,12 @@
 </head>
 <body>
 	<h1> Admin Login </h1>
-	<form action="admin_main">
-		<label for="id" >ID</label>
-		<input type="text" id="id" />
+	<form action="loginProc" class="form_box" method="post">
+		<label for="uid" >ID</label>
+		<input type="text" name="uid" /><br />
 		
 		<label for="pwd">Password</label>
-		<input type="password" id="pwd" />
+		<input type="password" name="pwd" /><br />
 		
 		<input type="submit" value="login" />
 	</form>

@@ -16,18 +16,9 @@ pageEncoding="UTF-8"%>
 </head>
 <body>
 
-<!-- header -->
 <tiles:insertAttribute name="header"/>
 
-<!-- aisde -->
-<div id="main_content" class="cf">
-	<tiles:insertAttribute name="aside" />
-<!-- content -->
-	<tiles:insertAttribute name="content" />
-</div>
-
-<!-- footer -->
-<tiles:insertAttribute name="footer" />
+<tiles:insertAttribute name="content" />
 
 
 </body>

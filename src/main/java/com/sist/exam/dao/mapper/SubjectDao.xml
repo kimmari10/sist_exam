@@ -5,7 +5,7 @@
   
 <mapper namespace="com.sist.exam.dao.SubjectDao">
 	<select id="getSubjectList" resultType="com.sist.exam.vo.Subject">
-		SELECT * FROM SUBJECT
+		SELECT * FROM SUBJECT ORDER BY SUBJECT_NO
 	</select>
 	
   	

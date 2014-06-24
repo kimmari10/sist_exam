@@ -3,62 +3,42 @@ pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <section id="content">
-	<div class="test_title">
+	<div class="">
 		<div>
-			test title / footprint
+			문제 창고
 		</div>
 	</div>
 	<div>
-		<div>
-			<form action="">
-				<label for="aid">아이디 : </label>
-				<input type="text" name="aid">
-				<label for="apwd">비밀번호 : </label>
-				<input type="text" name="apwd">
-				<label for="aname">이름 : </label>
-				<input type="text" name="aname">
-				<label for="aphone">연락처 : </label>
-				<input type="text" name="aphone">
-				<label for="amail">이메일 : </label>
-				<input type="text" name="amail">
-				<label for="tgroup">그룹 : </label>
+		<form action="">
+			<fieldset>
+				<legend>문제검색부분</legend>
 				<select>
-					<option>1</option>
+					<option>과목</option>
+					<option>문제</option>
+					<option>배점</option>
 				</select>
-				<input type="submit" value="register">
-			</form>
-			
-		</div>
+				<input type="text" />
+				<input type="submit" value="search" />
+				
+			</fieldset>
+		</form>
 	</div>
-	
 	<div>
-		<p>teacher list</p>
 		<table>
 			<thead>
-				<tr>
-					<th>아이디</th>
-					<th>비밀번호</th>
-					<th>이름</th>
-					<th>연락처</th>
-					<th>이메일</th>
-					<th>그룹</th>
-					<th>M/D</th>
-				</tr>
+			<tr>
+				<th>문제번호</th><th>유형</th><th>문제</th><th>답</th><th>배점</th>
+			</tr>
 			</thead>
 			<tbody>
-			
-			<c:forEach items="${admin }" var="l">
-				<tr>
-					<td>${l.admin_name }</td>
-					<td>${l.admin_id }</td>
-					<td>3</td>
-					<td>4</td>
-					<td>5</td>
-					<td>6</td>
-					<td>7</td>
-				</tr>
-			</c:forEach>
+				<div>
+					<tr>
+						<td>1</td><td>객관식</td><td>자바의 성격으로 맞는것은?</td><td>4번</td><td>5점</td>
+					</tr>
+				</div>
+				<div>답 해설 부분</div>
 			</tbody>
-		</table>	
+		</table>
+	
 	</div>
 </section>
