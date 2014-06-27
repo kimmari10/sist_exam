@@ -20,7 +20,7 @@ pageEncoding="UTF-8"%>
 			<label for="admin_phone">연락처 : </label>
 			<input id="tel" type="text" name="admin_phone" placeholder="-제외한 10~11자리 숫자"><br />
 			<label for="admin_email">이메일 : </label>
-			<input id="group" type="text" name="admin_email"><br />
+			<input id="email" type="text" name="admin_email"><br />
 			<label for="tgroup">그룹 : </label>
 			<select>
 				<option>1</option>
@@ -96,9 +96,9 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
 		form = $('.form'), 
 		uid = $('#uid'), 
 		upw = $('#upw'), 
-		name = $('#url'), 
+		name = $('#uname'), 
 		tel = $('#tel'),
-		mail = $('#mail'); 
+		mail = $('#email'); 
 		
 	// 선택한 form에 서밋 이벤트가 발생하면 실행한다
 	// if (사용자 입력 값이 정규식 검사에 의해 참이 아니면) {포함한 코드를 실행}

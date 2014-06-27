@@ -7,12 +7,12 @@ pageEncoding="UTF-8"%>
 	<a href="admin">Exam V1.0</a>
 
 	<c:if test="${empty sessionScope.uid }">
-		<div class="login"><a href="login">login</a></div>
+		<div class="login"><a href="login">LOGIN</a></div>
 	</c:if>
 	<c:if test="${not empty sessionScope.uid }">
-		<div class="logout"><a href="logoutProc">logout</a></div>
+		<div class="logout"><a href="logoutProc">LOGOUT</a></div>
 	</c:if>	
-	<div class="join"><a href="join">join</a></div>
+	<div class="join"><a href="join">JOIN</a></div>
 	
 
 </header>

@@ -1,6 +1,6 @@
 package com.sist.exam.vo;
 
-public class Subject {
+public class Subjects {
 	
 	private String subject_no;
 	private String subject_name;

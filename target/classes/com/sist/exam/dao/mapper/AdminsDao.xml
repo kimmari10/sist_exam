@@ -3,17 +3,17 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="com.sist.exam.dao.AdminDao">
-	<select id="getAdminList" resultType="com.sist.exam.vo.Admin">
-		SELECT * FROM ADMIN
+<mapper namespace="com.sist.exam.dao.AdminsDao">
+	<select id="getAdminList" resultType="com.sist.exam.vo.Admins">
+		SELECT * FROM ADMINS
 	</select>
 	
-	<select id="getAdmin" resultType="com.sist.exam.vo.Admin">
-		SELECT * FROM ADMIN WHERE ADMIN_ID = #{uid }
+	<select id="getAdmin" resultType="com.sist.exam.vo.Admins">
+		SELECT * FROM ADMINS WHERE ADMIN_ID = #{uid }
 	</select>
 	
-	<insert id="insert" parameterType="com.sist.exam.vo.Admin">
-		INSERT INTO ADMIN(ADMIN_ID, ADMIN_PW, ADMIN_NAME, ADMIN_EMAIL, ADMIN_PHONE)
+	<insert id="insert" parameterType="com.sist.exam.vo.Admins">
+		INSERT INTO ADMINS(ADMIN_ID, ADMIN_PW, ADMIN_NAME, ADMIN_EMAIL, ADMIN_PHONE)
 		VALUES(#{admin_id, jdbcType=VARCHAR}, #{admin_pw, jdbcType=VARCHAR}, #{admin_name, jdbcType=VARCHAR}, #{admin_email, jdbcType=VARCHAR}, #{admin_phone, jdbcType=VARCHAR})
 	</insert>
   <!-- 

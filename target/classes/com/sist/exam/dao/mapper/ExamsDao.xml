@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.sist.exam.dao.ExamsDao">
+	<select id="getSubjectList" resultType="com.sist.exam.vo.Exams">
+		SELECT * FROM EXAMS
+	</select>
+	
+  	
+  	<insert id="insert"  parameterType="com.sist.exam.vo.Exams">
+  		<selectKey keyProperty="exam_no" order="BEFORE" resultType="String">
+  			SELECT MAX(TO_NUMBER(NVL(EXAM_NO, '1')))+1 FROM EXAMS
+  		</selectKey>
+  		INSERT INTO EXAMS
+  		VALUES(
+  			#{exam_no}, #{type, jdbcType=NUMERIC }, #{question}, #{ex1},
+  			 #{ex2}, #{ex3}, #{ex4}, #{answer_ju},
+  			#{answer}, #{explain}, #{level}, #{score}, #{subject_no}
+  		)
+  	</insert>
+  	
+<!--   	<update id="update">
+  		UPDATE EXAMS SET SUBJECT_NAME =#{param2 } WHERE SUBJECT_NAME =#{param1 }
+  	</update> -->
+<!--   	
+  	<delete id="delete">
+  		DELETE FROM EXAMS WHERE EXAM_NO = #{curr_name}
+  	</delete> -->
+</mapper>

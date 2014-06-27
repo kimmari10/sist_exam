@@ -1,9 +1,9 @@
 package com.sist.exam.vo;
 
-public class Exam {
+public class Exams {
 	
 	private String exam_no;
-	private String type;
+	private int type;
 	private String question;
 	private String ex1;
 	private String ex2;
@@ -23,10 +23,10 @@ public class Exam {
 	public void setExam_no(String exam_no) {
 		this.exam_no = exam_no;
 	}
-	public String getType() {
+	public int getType() {
 		return type;
 	}
-	public void setType(String type) {
+	public void setType(int type) {
 		this.type = type;
 	}
 	public String getQuestion() {
@@ -95,6 +95,8 @@ public class Exam {
 	public void setSubject_no(String subject_no) {
 		this.subject_no = subject_no;
 	}
+	
+	
 	
 	
 	

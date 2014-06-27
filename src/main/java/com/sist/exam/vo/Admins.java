@@ -1,6 +1,6 @@
 package com.sist.exam.vo;
 
-public class Admin {
+public class Admins {
 
 	private String admin_id;
 	private String admin_pw;

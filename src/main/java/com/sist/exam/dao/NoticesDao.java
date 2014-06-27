@@ -1,5 +1,5 @@
 package com.sist.exam.dao;
 
-public interface NoticeDao {
+public interface NoticesDao {
 
 }

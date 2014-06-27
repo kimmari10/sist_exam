@@ -7,19 +7,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
+import org.apache.velocity.runtime.directive.Foreach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.sist.exam.dao.AdminDao;
+import com.sist.exam.dao.AdminsDao;
+import com.sist.exam.dao.ExamsDao;
 import com.sist.exam.dao.GroupsDao;
-import com.sist.exam.dao.SubjectDao;
-import com.sist.exam.vo.Admin;
+import com.sist.exam.dao.SubjectsDao;
+import com.sist.exam.vo.Admins;
+import com.sist.exam.vo.Exams;
 import com.sist.exam.vo.Groups;
-import com.sist.exam.vo.Subject;
+import com.sist.exam.vo.Subjects;
 
 /**
  * Handles requests for the application home page.
@@ -46,9 +48,9 @@ public class AdminController {
 	@RequestMapping(value = "/testlist")
 	public String testlist(Model m) throws ClassNotFoundException, SQLException {
 		
-		SubjectDao subDao = sqlSession.getMapper(SubjectDao.class);
+		SubjectsDao subDao = sqlSession.getMapper(SubjectsDao.class);
 		
-		List<Subject> list = subDao.getSubjectList(); 
+		List<Subjects> list = subDao.getSubjectList(); 
 		
 		m.addAttribute("subject", list);
 		
@@ -58,10 +60,10 @@ public class AdminController {
 		
 	//과목추가
 	@RequestMapping(value = "/add_subject")
-	public String addSubject(Subject subject) throws ClassNotFoundException, SQLException {
+	public String addSubject(Subjects subject) throws ClassNotFoundException, SQLException {
 		
 		
-		SubjectDao subDao = sqlSession.getMapper(SubjectDao.class);
+		SubjectsDao subDao = sqlSession.getMapper(SubjectsDao.class);
 
 		subDao.insert(subject);
 		
@@ -73,7 +75,7 @@ public class AdminController {
 	public String modSubject(HttpServletRequest req) throws ClassNotFoundException, SQLException {
 		
 		
-		SubjectDao subDao = sqlSession.getMapper(SubjectDao.class);
+		SubjectsDao subDao = sqlSession.getMapper(SubjectsDao.class);
 
 		//기존이름과 새로운이름을 받아서 넘긴다
 		String curr_name = req.getParameter("curr_name");
@@ -91,7 +93,7 @@ public class AdminController {
 	public String delSubject(HttpServletRequest req) throws ClassNotFoundException, SQLException {
 		
 		
-		SubjectDao subDao = sqlSession.getMapper(SubjectDao.class);
+		SubjectsDao subDao = sqlSession.getMapper(SubjectsDao.class);
 		
 		String curr_name = req.getParameter("curr_name");
 		subDao.delete(curr_name);
@@ -169,9 +171,9 @@ public class AdminController {
 	@RequestMapping(value = "/manage")
 	public String manageAdmin(Model m) throws ClassNotFoundException, SQLException {
 		
-		AdminDao adminDao = sqlSession.getMapper(AdminDao.class);
+		AdminsDao adminDao = sqlSession.getMapper(AdminsDao.class);
 		
-		List<Admin> list = adminDao.getAdminList();
+		List<Admins> list = adminDao.getAdminList();
 		m.addAttribute("admin", list);
 		
 		return "/admin/manage";
@@ -180,9 +182,9 @@ public class AdminController {
 	
 	//관리자추가
 	@RequestMapping(value = "/regadmin")
-	public String registerAdmin(Admin admin) throws ClassNotFoundException, SQLException {
+	public String registerAdmin(Admins admin) throws ClassNotFoundException, SQLException {
 		
-		AdminDao adminDao = sqlSession.getMapper(AdminDao.class);
+		AdminsDao adminDao = sqlSession.getMapper(AdminsDao.class);
 		adminDao.insert(admin);
 		
 		return "redirect:/admin";
@@ -191,9 +193,39 @@ public class AdminController {
 	
 	//문제출제
 	@RequestMapping(value = "/setquest")
-	public String setQuest() {
+	public String setQuest(Model m) throws ClassNotFoundException, SQLException {
+		
+		SubjectsDao subDao = sqlSession.getMapper(SubjectsDao.class);
+		
+		List<Subjects> list = subDao.getSubjectList();
+		
+		m.addAttribute("subject", list);
+		
 		
 		return "/admin/setQuest";
+	}
+
+	@RequestMapping(value = "/setQuestProc")
+	public String setQuestProc(Exams e) throws ClassNotFoundException, SQLException {
+		
+		ExamsDao exDao = sqlSession.getMapper(ExamsDao.class);
+		exDao.insert(e);
+
+		
+//		System.out.println(e.getSubject_no());
+//		System.out.println(e.getType());
+//		System.out.println(e.getQuestion());
+//		System.out.println(e.getEx1());
+//		System.out.println(e.getEx2());
+//		System.out.println(e.getEx3());
+//		System.out.println(e.getEx4());
+//		System.out.println(e.getAnswer());
+//		System.out.println(e.getAnswer_ju());
+//		System.out.println(e.getExplain());
+//		System.out.println(e.getLevel());
+//		System.out.println(e.getScore());
+//		
+		return "redirect:/setquest";
 	}
 	
 	
@@ -269,12 +301,12 @@ public class AdminController {
 	@RequestMapping(value = "/loginProc") 
 	public String loginProc(HttpServletRequest req) throws ClassNotFoundException, SQLException {
 		
-		AdminDao aDao = sqlSession.getMapper(AdminDao.class);
+		AdminsDao aDao = sqlSession.getMapper(AdminsDao.class);
 		
 		String uid = req.getParameter("uid");
 		String pwd = req.getParameter("pwd");
 		
-		Admin admin = aDao.getAdmin(uid);
+		Admins admin = aDao.getAdmin(uid);
 		
 		if(admin == null)
 		{
