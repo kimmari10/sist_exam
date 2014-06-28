@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
-import org.apache.velocity.runtime.directive.Foreach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -72,15 +71,10 @@ public class AdminController {
 	
 	//과목수정
 	@RequestMapping(value = "/mod_subject")
-	public String modSubject(HttpServletRequest req) throws ClassNotFoundException, SQLException {
+	public String modSubject(String curr_name, String new_name) throws ClassNotFoundException, SQLException {
 		
 		
 		SubjectsDao subDao = sqlSession.getMapper(SubjectsDao.class);
-
-		//기존이름과 새로운이름을 받아서 넘긴다
-		String curr_name = req.getParameter("curr_name");
-		String new_name = req.getParameter("new_name");
-		
 
 		subDao.update(curr_name, new_name);
 			
@@ -90,12 +84,11 @@ public class AdminController {
 	
 	//과목삭제
 	@RequestMapping(value = "/del_subject")
-	public String delSubject(HttpServletRequest req) throws ClassNotFoundException, SQLException {
+	public String delSubject(String curr_name) throws ClassNotFoundException, SQLException {
 		
 		
 		SubjectsDao subDao = sqlSession.getMapper(SubjectsDao.class);
 		
-		String curr_name = req.getParameter("curr_name");
 		subDao.delete(curr_name);
 		
 		return "redirect:/testlist";
@@ -129,35 +122,21 @@ public class AdminController {
 	
 	//그룹수정
 	@RequestMapping(value = "/mod_group")
-	public String modGroup(HttpServletRequest req) throws ClassNotFoundException, SQLException  {
+	public String modGroup(String curr_name, String new_name) throws ClassNotFoundException, SQLException  {
 		
 		GroupsDao cDao = sqlSession.getMapper(GroupsDao.class);
 
-		String cn = req.getParameter("curr_name");
-		String nn = req.getParameter("new_name");
 		
-		if(cn == "")
-		{
-			cn="null";
-		}
-		if(nn =="")
-		{
-			nn="null";
-					
-		}
-		
-		cDao.update(cn, nn);
+		cDao.update(curr_name, new_name);
 		
 		return "redirect:/grouplist";
 	}
 	
 	//그룹삭제
 	@RequestMapping(value = "/del_group")
-	public String delGroup(HttpServletRequest req) throws ClassNotFoundException, SQLException  {
+	public String delGroup(String curr_name) throws ClassNotFoundException, SQLException  {
 		
 		GroupsDao cDao = sqlSession.getMapper(GroupsDao.class);
-		
-		String curr_name = req.getParameter("curr_name");
 		
 		cDao.delete(curr_name);
 		
@@ -231,8 +210,37 @@ public class AdminController {
 	
 	//문제관리
 	@RequestMapping(value = "/managequest")
-	public String manageQuest(Model m) throws ClassNotFoundException, SQLException {
+	public String manageQuest(Model m, String field, String query ) throws ClassNotFoundException, SQLException {
 		
+		ExamsDao exDao = sqlSession.getMapper(ExamsDao.class);
+		SubjectsDao subDao = sqlSession.getMapper(SubjectsDao.class);
+		String sub_no = "";
+		String q ="";
+		
+		if(field==null)
+		{
+			field="subject";
+		}
+		if(query==null)
+		{
+			query="";
+		}
+		q = "%"+query+"%";
+		
+		//과목일경우 처리
+		if(field.equals("subject"))
+		{
+				List<Exams> list = exDao.getExamList("subject_no", q);
+				m.addAttribute("exams", list);
+		}
+		
+		//과목이 아닌경우
+		else
+		{
+			List<Exams> list = exDao.getExamList(field, q);
+			m.addAttribute("exams", list);
+		}
+		//과목번호 파싱 미완성
 		
 		return "/admin/manageQuest";
 	}

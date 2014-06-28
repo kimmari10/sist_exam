@@ -8,6 +8,10 @@
 		SELECT * FROM SUBJECTS ORDER BY SUBJECT_NO
 	</select>
 	
+	<select id="getSubjectNo" resultType="String">
+		SELECT SUBJECT_NO FROM SUBJECTS WHERE SUBJECT_NO = #{param1 }
+	</select>
+	
   	
   	<insert id="insert"  parameterType="com.sist.exam.vo.Subjects">
   		<selectKey keyProperty="subject_no" order="BEFORE" resultType="String">

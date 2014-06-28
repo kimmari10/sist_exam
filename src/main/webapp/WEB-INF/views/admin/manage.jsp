@@ -49,7 +49,7 @@ pageEncoding="UTF-8"%>
 				<tbody>
 				<c:forEach items="${admin }" var="l">
 					<tr>
-					<from action="md_admin" method="post">
+					<form action="md_admin" method="post">
 						<td class="admin_id">${l.admin_id }</td>
 						<td class="admin_pw">${l.admin_pw }</td>
 						<td class="admin_name">${l.admin_name }</td>
@@ -57,7 +57,7 @@ pageEncoding="UTF-8"%>
 						<td class="admin_email">${l.admin_email }</td>
 						<td class="admin_group"></td>
 						<td class="admin_md"><input name="mod" type="submit" value ="m" > / <input type="submit" name="del" value="d"></td>
-					</from>
+					</form>
 					</tr>
 				</c:forEach>
 				</tbody>

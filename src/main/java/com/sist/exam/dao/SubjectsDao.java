@@ -8,6 +8,7 @@ import com.sist.exam.vo.Subjects;
 public interface SubjectsDao {
 	
 	public List<Subjects> getSubjectList() throws SQLException, ClassNotFoundException;
+	public String getSubjectNo(String query) throws SQLException, ClassNotFoundException;
 	public int insert(Subjects subject) throws SQLException, ClassNotFoundException;
 	public int update(String curr_name, String new_name) throws SQLException, ClassNotFoundException;
 	public int delete(String curr_name) throws SQLException, ClassNotFoundException;
